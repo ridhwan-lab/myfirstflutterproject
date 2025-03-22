@@ -76,20 +76,83 @@
 // }
 
 
+// import 'package:flutter/material.dart';
+// import 'package:myfirstflutterproject/models/pelajar.dart';
+// import 'package:myfirstflutterproject/widgets/customtile.dart';
+
+// // ignore: must_be_immutable
+// class Coursedetail extends StatelessWidget {
+//   Coursedetail({required this.pelajar, super.key});
+//   Pelajar pelajar;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text(pelajar.name ?? '-'),
+//         ),
+//         body: Padding(
+//           padding: const EdgeInsets.all(12.0),
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Customtile(title: 'Nama', value: pelajar.name ?? 'N/A'),
+//               Customtile(title: 'Jantina', value: pelajar.gender ?? 'N/A'),
+//               Customtile(
+//                 title: 'Umur',
+//                 value: pelajar.age != null ? pelajar.age.toString() : 'N/A',
+//               ),
+//               Customtile(title: 'Nama Sekolah', value: pelajar.schoolname ?? 'N/A'),
+//               Customtile(
+//                 title: 'Nama Penjaga',
+//                 value: pelajar.penjaga!.parentName ?? 'N/A'
+//               ),
+//                Customtile(
+//                 title: 'Alamat',
+//                 value: pelajar.penjaga!.address ?? 'N/A'
+//               ),
+//               Customtile(
+//                 title: 'Status Hadir',
+//                 value: pelajar.statusHadir.toString() ?? 'N/A'
+//               ),
+              
+//               pelajar.statusHadir == 1
+//                   ? const Center(
+//                       child: Icon(
+//                         Icons.check_circle_outline,
+//                         size: 180,
+//                         color: Colors.green,
+//                       ),
+//                     )
+//                   : const Center(
+//                       child: Icon(
+//                         Icons.cancel_outlined,
+//                         size: 180,
+//                         color: Colors.red,
+//                       ),
+//                     ),
+//             ],
+//           ),
+//         ));
+//   }
+// }
+
+
 import 'package:flutter/material.dart';
 import 'package:myfirstflutterproject/models/pelajar.dart';
 import 'package:myfirstflutterproject/widgets/customtile.dart';
 
-// ignore: must_be_immutable
 class Coursedetail extends StatelessWidget {
-  Coursedetail({required this.pelajar, super.key});
-  Pelajar pelajar;
+  const Coursedetail({required this.pelajar, super.key});
+  final Pelajar pelajar;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(pelajar.name ?? '-'),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
         ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -102,18 +165,17 @@ class Coursedetail extends StatelessWidget {
                 title: 'Umur',
                 value: pelajar.age != null ? pelajar.age.toString() : 'N/A',
               ),
-              Customtile(title: 'Nama Sekolah', value: pelajar.schoolname ?? 'N/A'),
               Customtile(
                 title: 'Nama Penjaga',
-                value: pelajar.penjaga!.parentName ?? 'N/A'
-              ),
-               Customtile(
-                title: 'Alamat',
-                value: pelajar.penjaga!.address ?? 'N/A'
+                value: pelajar.penjaga!.parentName ?? 'N/A',
               ),
               Customtile(
-                title: 'Status Hadir',
-                value: pelajar.statusHadir.toString() ?? 'N/A'
+                title: 'No Telefon Penjaga',
+                value: pelajar.penjaga!.nohp1 ?? 'N/A',
+              ),
+              Customtile(
+                title: 'Alamat',
+                value: pelajar.penjaga!.address ?? 'N/A',
               ),
               pelajar.statusHadir == 1
                   ? const Center(
@@ -135,4 +197,3 @@ class Coursedetail extends StatelessWidget {
         ));
   }
 }
-
